@@ -12,7 +12,7 @@ Inside will be links to my index, contacts, and portfolio html pages that have b
 
 Here are direct links to my three webpages.
 
-[About Me](https://issaissa-issa.github.io/homework2/index2.html)
+[About Me](https://issaissa-issa.github.io/homework2/index.html)
 
 [Contact](https://issaissa-issa.github.io/homework2/contact.html)
 
