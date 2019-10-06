@@ -1,13 +1,6 @@
-var genPassword = document.getElementById("generate");
-var copyText = document.getElementById("copy"); 
-var passwordField = document.getElementById("password");
-
-alert(document.getElementById("copy"));
-
 function clipboard() {
-  copyText = document.getElementById("password").textContent;
+  copyText = document.getElementById("password");
   copyText.select();
-  copyText.setSelectionRange(0, 99999);
   document.execCommand("copy");
     
     
