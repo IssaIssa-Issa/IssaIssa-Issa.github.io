@@ -28,17 +28,17 @@ function generatePassword() {
       else if (userChoice < 8) {
         alert("You must pick a character count equal to or greater than 8 characters!");
       }
-       
-     
-  
-      charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 !#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
-      copyText = "";
+      else{
+        charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 !#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+        copyText = "";
       
       
     for (var i = 0; i < userChoice; ++i) {
         copyText += charset.charAt(Math.random() * i);
     }
-document.getElementById("password").innerHTML = copyText;
+      document.getElementById("password").innerHTML = copyText;
+      }
+      
   };
 
 
