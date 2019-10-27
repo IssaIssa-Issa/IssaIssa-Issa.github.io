@@ -1,0 +1,9 @@
+#weather1 {
+    border: 1px solid black;
+    border-radius: 16px;
+    float: right;
+}
+
+.remove {
+    display: none;
+}
