@@ -1,7 +1,7 @@
     function weather() {
 
 
-        var queryURL = "https://api.openweathermap.org/data/2.5/forecast?id=" + name + "&APPID=c1e92f1102f974ef4c31578d4a625bfa";
+        var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + name + "&units=imperial" + "&APPID=c1e92f1102f974ef4c31578d4a625bfa";
 
         $.ajax({
             type: "GET",
