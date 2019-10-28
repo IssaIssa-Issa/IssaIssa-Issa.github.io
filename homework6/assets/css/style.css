@@ -7,3 +7,26 @@
 .remove {
     display: none;
 }
+
+#weather1 {
+    position: relative;
+    margin: 0 auto;
+    left: 100px;
+}
+
+#weather2 {
+    position: relative;
+    margin: 0 auto;
+    left: 100px;
+}
+
+.card {
+    background-color: #27CCEA;
+}
+
+#navTitle {
+    font-family: 'Crimson Text', serif;
+    position: relative;
+    left: 300px;
+    font-size: 40px;
+}
