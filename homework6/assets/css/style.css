@@ -1,26 +1,35 @@
-#weather1 {
-    border: 1px solid black;
-    border-radius: 16px;
-    float: right;
+body{
+    background-image: url("../images/weather.png");
 }
-
 .remove {
     display: none;
 }
 
 #weather1 {
-    position: relative;
     margin: 0 auto;
-    left: 100px;
 }
 
 #weather2 {
-    position: relative;
     margin: 0 auto;
-    left: 100px;
 }
 
-.card {
+.day1 {
+    background-color: #27CCEA;
+}
+
+.day2 {
+    background-color: #27CCEA;
+}
+
+.day3 {
+    background-color: #27CCEA;
+}
+
+.day4 {
+    background-color: #27CCEA;
+}
+
+.day5 {
     background-color: #27CCEA;
 }
 
