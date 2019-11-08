@@ -75,30 +75,34 @@ function getWeatherInfo(name) {
         //     console.log(response.list[i].dt_txt);
             $(".card-body").attr("class", "card-body");
             $(".day1").attr("class", "day1");
-            $(".1.2").html(response.city.name);
+            $(".day2").attr("class", "day2");
+            $(".day3").attr("class", "day3");
+            $(".day4").attr("class", "day4");
+            $(".day5").attr("class", "day5");
+            $(".card-text1.2").html(response.city.name);
             $(".1").attr("src", "http://openweathermap.org/img/w/" + response.list[7].weather[0].icon + ".png");
             $(".1").css("max-width", "20s%");
-            $(".1.1").html("Temperature: " + parseInt(response.list[7].main.temp) + "<br></br>" + "Humidity: " + parseInt(response.lsit[7].main.humidity));
+            $(".card-title1.1").html("Temperature: " + parseInt(response.list[7].main.temp) + "<br></br>" + "Humidity: " + parseInt(response.lsit[7].main.humidity));
             $(".day2").attr("class", "day2");
-            $(".2.2").html(response.city.name);
+            $(".card-text2.2").html(response.city.name);
             $(".2").attr("src", "http://openweathermap.org/img/w/" + response.list[15].weather[0].icon + ".png");
             $(".2").css("max-width", "20%");
-            $(".2.1").html("Temperature: " + parseInt(response.list[15].main.temp) + "<br></br>" + "Humidity: " + parseInt(response.lsit[15].main.humidity));
+            $(".card-title2.1").html("Temperature: " + parseInt(response.list[15].main.temp) + "<br></br>" + "Humidity: " + parseInt(response.lsit[15].main.humidity));
             $(".day3").attr("class", "day3");
-            $(".3.2").html(response.city.name);
+            $(".card-text3.2").html(response.city.name);
             $(".3").attr("src", "http://openweathermap.org/img/w/" + response.list[23].weather[0].icon + ".png");
             $(".3").css("max-width", "20%");
-            $(".3.1").html("Temperature: " + parseInt(response.list[23].main.temp) + "<br></br>" + "Humidity: " + parseInt(response.lsit[23].main.humidity));
+            $(".card-title3.1").html("Temperature: " + parseInt(response.list[23].main.temp) + "<br></br>" + "Humidity: " + parseInt(response.lsit[23].main.humidity));
             $(".day4").attr("class", "day4");
-            $(".4.2").html(response.city.name);
+            $(".card-text4.2").html(response.city.name);
             $(".4").attr("src", "http://openweathermap.org/img/w/" + response.list[31].weather[0].icon + ".png");
             $(".4").css("max-width", "20%");
-            $(".4.1").html("Temperature: " + parseInt(response.list[31].main.temp) + "<br></br>" + "Humidity: " + parseInt(response.lsit[31].main.humidity));
+            $(".card-title4.1").html("Temperature: " + parseInt(response.list[31].main.temp) + "<br></br>" + "Humidity: " + parseInt(response.lsit[31].main.humidity));
             $(".day5").attr("class", "day5");
-            $(".5.2").html(response.city.name);
+            $(".card-text5.2").html(response.city.name);
             $(".5").attr("src", "http://openweathermap.org/img/w/" + response.list[39].weather[0].icon + ".png");
             $(".5").css("max-width", "20%");
-            $(".5.1").html("Temperature: " + parseInt(response.list[39].main.temp) + "<br></br>" + "Humidity: " + parseInt(response.lsit[39].main.humidity));
+            $(".card-title5.1").html("Temperature: " + parseInt(response.list[39].main.temp) + "<br></br>" + "Humidity: " + parseInt(response.lsit[39].main.humidity));
         //   }
         // }
       })
