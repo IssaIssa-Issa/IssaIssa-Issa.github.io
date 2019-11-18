@@ -17,7 +17,7 @@ function promptUser() {
     {
       type: "input",
       name: "location",
-      message: "Where are you from?"
+      message: "Where are you from?" 
     },
     {
       type: "input",
