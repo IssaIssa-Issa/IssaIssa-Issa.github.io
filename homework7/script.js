@@ -34,82 +34,124 @@ function promptUser() {
       name: "linkedin",
       message: "Enter your LinkedIn Username"
     },
-  ]);
-}
+  ])
+  .then(
+    function getData (answers) {
+      const queryUrl = `https://api.github.com/users/${answers.github}`;
+      const starsUrl = `https://api.github.com/users/${answers.github}/starred?`;
+      res = axios.get(queryUrl).then(function (res) {
+      stars = axios.get(starsUrl).then(function (stars) {
 
-function generateHTML(answers, profileUrl) {
-  return `
-  <!DOCTYPE html>
+      return  writeFileAsync("index.html",
+
+  `<!DOCTYPE html>
   <html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Calistoga&display=swap" rel="stylesheet">
+    <script src="https://use.fontawesome.com/6360c5bb77.js"></script>
+    <style>
+    img {
+      position: relative;
+      left: 40%;
+      max-height: 800px;
+      max-width: 800px;
+      border-radius: 50%;
+      border: 1px solid black;
+  }
+  
+  h1 {
+      text-align: center;
+      font-family: 'Calistoga', cursive;
+  }
+  
+  p {
+      text-align: right;
+      font-family: 'Calistoga', cursive;
+  }
+  
+  .middle{
+      text-align: center;
+      font-size: large;
+      font-weight: bold;
+      padding: 20px;
+      margin: 5px;
+      font-family: 'Calistoga', cursive;
+  }
+  
+  #second {
+      background-color:#d3d3d3;
+  }
+
+  #following {
+    position: relative;
+    left: 35%;
+  }
+  </style>
     <title>GitHub Profile</title>
   </head>
   <body>
     <div class="container" style="max-width: 960px">
       <div class="row">
-        <div class="col-lg-1"></div>
-        <div class="col-lg-10">
+        <div></div>
+        <div>
         <div class="jumbotron jumbotron-fluid" style="background-color: ${answers.color}">
           <div class="container">
           <img src="https://avatars1.githubusercontent.com/u/53546340?v=4" alt="Profile Picture" style="border-radius: 50%">
             <h1 class="display-4">Hi!<br>My name is ${answers.name}!</h1>
-              <a href="https://www.google.com/maps/place/${answers.location}><p class="lead fa fa-map-marker" style="font-size:24px">${answers.location}.</p></a>
-              <a href="https://github.com/${answers.github}" style="font-size:24px"><p class="list-group-item fab fa-github">My GitHub username is ${answers.github}</p></a>
-              <a href="https://www.linkedin.com/in/${answers.linkedin}" style="font-size:24px"><p class="list-group-item fas fa-blog">LinkedIn: ${answers.linkedin}</p></a>
+              <a href="https://www.google.com/maps/place/${answers.location}"><p class="lead" style="font-size:24px"><i class="fas fa-search-location"></i> ${answers.location}.</p></a>
+              <a href="https://github.com/${answers.github}" style="font-size:24px"><p class="list-group-item">My GitHub username is <i class="fab fa-github"></i> ${answers.github}</p></a>
+              <a href="https://www.linkedin.com/in/${answers.linkedin}" style="font-size:24px"><p class="list-group-item">LinkedIn: <i class="fab fa-linkedin"></i> ${answers.linkedin}</p></a>
           </div>
         </div>
         </div>
-        <div class="col-lg-1"></div>
+        <div></div>
       </div>
-      <p class="middle">I work on making applications and websites, and I am a self-proclaimed Pokemon Master!</p>
+      <p class="middle">I work on making applications and websites, and I am a swell person!</p>
       <div id="second">
       <div class="row">
-          <div class="col-lg-2"></div>
-          <div class="col-lg-3.5">
-          <div class="card" style="background-color: ${answers.color}">Public Repositories: ${profileUrl.data.public_repos}</div>
+          <div></div>
+          <div>
+          <div class="card w-100 h-100 middle" style="background-color: ${answers.color}">Public Repositories: ${res.data.public_repos}</div>
           </div>
-          <div class="col-lg-1"></div>
-          <div class="col-lg-3.5">
-          <div class="card" style="background-color: ${answers.color}">Followers: ${profileUrl.data.followers}</div>
+          <div></div>
+          <div>
+          <div class="card w-100 h-100 middle" style="background-color: ${answers.color}">Followers: ${res.data.followers}</div>
           </div>
-          <div class="col-lg-2"></div>
+          <div></div>
         </div>
           <div class="row">
-          <div class="col-lg-2"></div>
-          <div class="col-lg-3.5">
-          <div class="card" style="background-color: ${answers.color}">Github Stars: ${starred.data.stargazers_count}</div>
+          <div></div>
+          <div>
+          <div class="card w-100 h-100 middle" style="background-color: ${answers.color}">Github Stars: ${stars.data.length}</div>
           </div>
-          <div class="col-lg-1"></div>
-          <div class="col-lg-3.5">
-          <div class="card" style="background-color: ${answers.color}">Following: ${profileUrl.data.following}</div>
+          <div></div>
+          <div>
+          <div class="card w-100 h-100 middle" id="following" style="background-color: ${answers.color}">Following: ${res.data.following}</div>
           </div>
-          <div class="col-lg-2"></div>
+          <div></div>
         </div>
         </div>
     </div>
   </body>
-  </html>`;
-}
+  </html>`
+)
+})
+})
+})}
 
 async function init() {
   try {
    
-    const answers = await promptUser();
-    const profileUrl = await axios.get("https://api.github.com/users/" + answer.github);
-  
-      const html = generateHTML(answers, profileUrl);
-  
-      await writeFileAsync("index.html", html);
-  
+ await promptUser();
+
       var readHtml = fs.readFileSync('index.html', 'utf8');
       var options = { format: 'Letter',
-                      height: "960px",
-                      width: "960px"};
+                      height: "2000px",
+                      width: "2000px"};
        
       pdf.create(readHtml, options).toFile('test.pdf', function(err, res) {
         if (err) return console.log(err);
@@ -121,5 +163,5 @@ async function init() {
       console.log(err);
     }
   }
-  
+
   init();
