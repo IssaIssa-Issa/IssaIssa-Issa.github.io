@@ -1,13 +1,20 @@
-# HTML to PDF
+# Portfolio
 
-Here you will find all of my homework assignments for the class. Each will be located inside of a folder titled which homework assignment it is.
+## My portfolio
 
-The assignment was to create a serires of prompts that take the user information and will create an HTML page that will also be converted to a PDF file.
 
-## Below is a Gif of the program being started
+Inside will be links to my index, contacts, and portfolio html pages that have been modified to have a responsive display using bootstrap. Inside my assests folder you will find two more folders that hold my images and css files.
 
-![Here is a gif of me running the program](images/pdf.gif)
+![About Me](assets/images/capture1.PNG)
 
-## Below is a still image of what the PDF looks like after being made.
+![Contacts](assets/images/capture2.PNG)
 
-[Link to homework](https://issaissa-issa.github.io/homework6)
+![Portfolio](assets/images/capture3.PNG)
+
+Here are direct links to my three webpages.
+
+[About Me](https://issaissa-issa.github.io/homework2/index.html)
+
+[Contact](https://issaissa-issa.github.io/homework2/contact.html)
+
+[Portfolio](https://issaissa-issa.github.io/homework2/portfolio.html)
