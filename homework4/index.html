@@ -1,11 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Code Quiz</title>
-  </head>
-  <body>
-  </body>
-</html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Who's that Pokemon</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="../css/styles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+</head>
+
+<header>
+  <h5 id="scoreview">View High Score</h5>
+  <h5 id="timer">Timer</h5>
+  <div id="seconds">60</div>
+</header>
+
+<body>
+  <div id=instructions>
+    <h1>Pokemon Guessing Quiz Challenge</h1>
+    <p>Try to answer the following Pokemon related questions within the time limit. <br>Keep in mind that incorrect answers
+      will penalize your scoretime by ten seconds.</p>
+    <div class="col-md-12 text-center">
+      <button type="button" id="startbutton" class="btn btn-primary">Start Quiz</button>
+    </div>
+  </div>
+  <div id=q1>
+    <div class="col-md-12 text-center">
+      <h1>What are Fire type Pokemon weak against?:</h1>
+      <button type="button" class="q1incorrect" class="btn btn-primary">1. Thunder</button><br>
+      <button type="button" class="q1incorrect" class="btn btn-primary">2. Ghost</button><br>
+      <button type="button" class="q1correct" class="btn btn-primary">3. Water</button><br>
+      <button type="button" class="q1incorrect" class="btn btn-primary">4. Fighting</button>
+    <div id=answer1></div>
+    </div>
+  </div>
+  <div id=q2>
+    <div class="col-md-12 text-center">
+      <h1>Misty is the Gym leader of the ____ city gym.</h1>
+      <button type="button" class="q2incorrect" class="btn btn-primary">1. Veridian</button><br>
+      <button type="button" class="q2incorrect" class="btn btn-primary">2. Pallet</button><br>
+      <button type="button" class="q2correct" class="btn btn-primary">3. Cerulean</button><br>
+      <button type="button" class="q2incorrect" class="btn btn-primary">4. Indigo</button>
+      <div id=answer2></div>
+    </div>
+  </div>
+    <div id=q3>
+      <div class="col-md-12 text-center">
+        <h1>When your Pokemon are injuried in battle, take them to a ______.</h1>
+        <button type="button" class="q3incorrect" class="btn btn-primary">1. Hospital</button><br>
+        <button type="button" class="q3incorrect" class="btn btn-primary">2. Emergency Clinic</button><br>
+        <button type="button" class="q3incorrect" class="btn btn-primary">3. PokeMart</button><br>
+        <button type="button" class="q3correct" class="btn btn-primary">4. PokeCenter</button>
+        <div id=answer3></div>
+      </div>
+    </div>
+      <div id=q4>
+        <div class="col-md-12 text-center">
+          <h1>Which Pokemon is iconic for being Ash Ketchum's longest running companion.</h1>
+          <button type="button" class="q4incorrect" class="btn btn-primary">1. Charizard</button><br>
+          <button type="button" class="q4incorrect" class="btn btn-primary">2. MewTwo</button><br>
+          <button type="button" class="q4correct" class="btn btn-primary">3. Pikachu</button><br>
+          <button type="button" class="q4incorrect" class="btn btn-primary">4. Dog</button>
+          <div id=answer4></div>
+        </div>
+        </div>
+        <div id=q5>
+          <div class="col-md-12 text-center">
+            <h1>As a Pokemon Master, your overall quest is to ______:</h1>
+            <button type="button" class="q5incorrect" class="btn btn-primary">1. Win Battles</button><br>
+            <button type="button" class="q5incorrect" class="btn btn-primary">2. Visit as many cities as possible</button><br>
+            <button type="button" class="q5incorrect" class="btn btn-primary">3. Become King of all Pokemon</button><br>
+            <button type="button" class="q5correct" class="btn btn-primary">4. Catch em' All</button>
+            <div id=answer5></div>
+          </div>
+        </div>
+          <div id=finished>
+            <h1>All Done!</h1>
+            <p id=scoresentence>Your final Score is:</p><div id=scoreis></div>
+            <div class=score></div>
+            <input class="form-control" type="text" placeholder="Enter Initials">
+            <button id="initialsubmit" class="btn btn-primary" type="submit">Submit form</button>
+          </div>
+          <div id=highscore>
+            <h1>HighScores</h1>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">Place</th>
+                  <th scope="col">Initials</th>
+                  <th scope="col">Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">
+                    <div id=place></div>
+                  </th>
+                  <td>
+                    <div id="initials"></div>
+                  </td>
+                  <td>
+                    <div class="score"></div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <button type="button" id="goBack" class="btn btn-primary">Go Back</button>
+            <button type="button" id="clearScores" class="btn btn-primary">Clear High scores</button>
+
+          </div>
+
+          <script src="assets/javascript/script.js"></script>
+</body>
