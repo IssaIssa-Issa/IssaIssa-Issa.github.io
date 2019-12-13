@@ -1,3 +1,5 @@
+USE feel_good_inc;
+
 INSERT INTO department_table (department_name)
 VALUES ("Sales");
 
@@ -33,3 +35,9 @@ VALUES ("Elfriede", "Benkert", 3, NULL);
 
 INSERT INTO employee_table (first_name, last_name, role_ID, mng_ID)
 VALUES ("Sam", "Kwang-Sun", 3, 3);
+
+INSERT INTO employee_table (first_name, last_name, role_ID, mng_ID)
+VALUES ("Jessica", "Mathias", 2, NULL);
+
+INSERT INTO employee_table (first_name, last_name, role_ID, mng_ID)
+VALUES ("Omar", "Hassan", 4, NULL);

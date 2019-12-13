@@ -7,8 +7,8 @@ var connection = mysql.createConnection({
   host: "localhost",
   port: 3306,
   user: "root",
-  password: "Ywyktp1!",
-  database: "Fake_Inc"
+  password: "",
+  database: "Feel Good Inc"
 });
 
 let allEmployees = []
@@ -108,10 +108,10 @@ function employeeByDeptSearch() {
       type: "rawlist",
       message: "Select a Manager to see their direct reports?",
       choices: [
-        "Ashley Rodriguez",
-        "Mike Chan",
-        "John Doe",
-        "Sarah Lourd",
+        "Chad Johnson",
+        "Jessica Mathias",
+        "Elfriede Benkert",
+        "Omar Hassan",
       ]
     })
       .then(function (answer) {
@@ -122,8 +122,7 @@ function employeeByDeptSearch() {
       });
       runSearch();
     };
-        
-      //continue editing from here
+
 
 function addEmployee() {
         inquirer
@@ -158,10 +157,10 @@ function addEmployee() {
             type: "rawlist",
             message: "Who will be their manager?",
             choices: [
-              "Ashley Rodriguez",
-              "Mike Chan",
-              "John Doe",
-              "Sarah Lourd",
+              "Chad Johnson",
+              "Jessica Mathias",
+              "Elfriede Benkert",
+              "Omar Hassan",
             ]
        })
           .then(function (answer) {
