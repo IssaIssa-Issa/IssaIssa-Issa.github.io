@@ -1,143 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"/>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <title>Work Day Scheduler</title>
-  </head>
 
-  <body>
-    <header class="jumbotron">
-      <h1 class="display-3">Work Day Scheduler</h1>
-      <p class="lead">A simple calendar app for scheduling your work day</p>
-      <p id="currentDay" class="lead"></p>
-    </header>
-    <div class="container">
-      <div class="row">
-        <div id="time1" class="col-lg-2">9AM</div>
-        <div class="col-lg-8">
-          <div class="text">
-            <div class="input-group input-group-lg">
-              <input type="text" class="form-control"  >
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-2">
-          <button type="button" class="saveBtn">save</button>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <title>Work Day Scheduler</title>
+</head>
+
+<body>
+  <header class="jumbotron">
+    <h1 class="display-3">Work Day Scheduler</h1>
+    <p class="lead">A simple calendar app for scheduling your work day</p>
+    <p id="currentDay" class="lead"></p>
+  </header>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-2">9AM</div>
+      <div class="col-lg-8">
+        <textarea class="col-lg-12 hour ninehour">
+            </textarea>
       </div>
-      <div class="row">
-        <div id="time2" class="col-lg-2">10AM</div>
-        <div class="col-lg-8">
-          <div class="text">
-            <div class="input-group input-group-lg">
-              <input type="text" class="form-control"  >
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-2">
-          <button type="button" class="saveBtn">save</button>
-        </div>
-      </div>
-      <div class="row">
-        <div id="time3" class="col-lg-2">11AM</div>
-        <div class="col-lg-8">
-          <div class="text">
-            <div class="input-group input-group-lg">
-              <input type="text" class="form-control"  >
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-2">
-          <button type="button" class="saveBtn">save</button>
-        </div>
-      </div>
-      <div class="row">
-        <div id="time4" class="col-lg-2">12PM</div>
-        <div class="col-lg-8">
-          <div class="text">
-            <div class="input-group input-group-lg">
-              <input type="text" class="form-control"  >
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-2">
-          <button type="button" class="saveBtn">save</button>
-        </div>
-      </div>
-      <div class="row">
-        <div id="time5" class="col-lg-2">1PM</div>
-        <div class="col-lg-8">
-          <div class="text">
-            <div class="input-group input-group-lg">
-              <input type="text" class="form-control"  >
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-2">
-          <button type="button" class="saveBtn">save</button>
-        </div>
-      </div>
-      <div class="row">
-        <div id="time6" class="col-lg-2">2PM</div>
-        <div class="col-lg-8">
-          <div class="text">
-            <div class="input-group input-group-lg">
-              <input type="text" class="form-control"  >
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-2">
-          <button type="button" class="saveBtn">save</button>
-        </div>
-      </div>
-      <div class="row">
-        <div id="time7" class="col-lg-2">3PM</div>
-        <div class="col-lg-8">
-          <div class="text">
-            <div class="input-group input-group-lg">
-              <input type="text" class="form-control"  >
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-2">
-          <button type="button" class="saveBtn">save</button>
-        </div>
-      </div>
-      <div class="row">
-        <div id="time8" class="col-lg-2">4PM</div>
-        <div class="col-lg-8">
-          <div class="text">
-            <div class="input-group input-group-lg">
-              <input type="text" class="form-control"  >
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-2">
-          <button type="button" class="saveBtn">save</button>
-        </div>
-      </div>
-      <div class="row">
-        <div id="time9" class="col-lg-2">5PM</div>
-        <div class="col-lg-8">
-          <div class="text">
-            <div class="input-group input-group-lg">
-              <input type="text" class="form-control"  >
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-2">
-          <button type="button" class="saveBtn">Save</button>
-        </div>
+      <div class="col-lg-2">
+        <button type="button" class="saveBtn" data-time="nine">save</button>
       </div>
     </div>
-    <script type="text/javascript" src="assets/javascript/script.js"></script>
-  </body>
+    <div class="row">
+      <div class="col-lg-2">10AM</div>
+      <div class="col-lg-8">
+        <textarea class="col-lg-12 hour tenhour">
+          </textarea>
+      </div>
+    </div>
+    <div class="col-lg-2">
+      <button type="button" class="saveBtn" data-time="ten">save</button>
+    </div>
+  <div class="row">
+    <div class="col-lg-2">11AM</div>
+    <div class="col-lg-8">
+      <textarea class="col-lg-12 hour elevenhour">
+          </textarea>
+    </div>
+    <div class="col-lg-2">
+      <button type="button" class="saveBtn" data-time="eleven">save</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-2">12PM</div>
+    <div class="col-lg-8">
+      <div class="text">
+        <textarea class="col-lg-12 hour twelvehour">
+            </textarea>
+      </div>
+    </div>
+    <div class="col-lg-2">
+      <button type="button" class="saveBtn" data-time="twelve">save</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-2">1PM</div>
+    <div class="col-lg-8">
+      <div class="text">
+        <textarea class="col-lg-12 hour thirteenhour">
+            </textarea>
+      </div>
+    </div>
+    <div class="col-lg-2">
+      <button type="button" class="saveBtn" data-time="thirteen">save</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-2">2PM</div>
+    <div class="col-lg-8">
+      <div class="text">
+        <textarea class="col-lg-12 hour fourteenhour">
+            </textarea>
+      </div>
+    </div>
+    <div class="col-lg-2">
+      <button type="button" class="saveBtn" data-time="fourteen">save</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-2">3PM</div>
+    <div class="col-lg-8">
+      <div class="text">
+        <textarea class="col-lg-12 hour fifteenhour">
+            </textarea>
+      </div>
+    </div>
+    <div class="col-lg-2">
+      <button type="button" class="saveBtn" data-time="fifteen">save</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-2">4PM</div>
+    <div class="col-lg-8">
+      <div class="text">
+        <textarea class="col-lg-12 hour sixteenhour">
+            </textarea>
+      </div>
+    </div>
+    <div class="col-lg-2">
+      <button type="button" class="saveBtn" data-time="sixteen">save</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-2">5PM</div>
+    <div class="col-lg-8">
+      <div class="text">
+        <textarea class="col-lg-12 hour seventeenhour">
+            </textarea>
+      </div>
+    </div>
+    <div class="col-lg-2">
+      <button type="button" class="saveBtn" data-time="seventeen">Save</button>
+    </div>
+  </div>
+  </div>
+  <script type="text/javascript" src="assets/javascript/script.js"></script>
+</body>
+
 </html>
