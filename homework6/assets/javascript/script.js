@@ -15,14 +15,13 @@ function renderButtons() {
     citiesbutton.css("border-color", "#FF7F50");
     citiesbutton.css("background-color", "#FF7F50");
     citiesbutton.css("color", "white");
-  //   #save_value {
-  //     border-radius: .25rem;
-  //     background-color: #6b992f;;
-  //     border-color: #6b992f;;
-  //     color: white;
-  // }
+    //   #save_value {
+    //     border-radius: .25rem;
+    //     background-color: #6b992f;;
+    //     border-color: #6b992f;;
+    //     color: white;
+    // }
 
-    console.log(city[i]);
 
     $(".cityPlaceHolder").append(citiesbutton);
 
@@ -44,7 +43,7 @@ function getWeatherInfo(name) {
       type: "GET",
       url: queryURL
     })
-      .then(function(response) {
+      .then(function (response) {
         console.log(queryURL);
         console.log(response);
         $(".card1").attr("class", "card1");
@@ -63,7 +62,7 @@ function getWeatherInfo(name) {
           "border-radius": "16px"
         });
       })
-      .fail(function(error) {
+      .fail(function (error) {
         console.log(JSON.parse(error));
         //alert(JSON.parse(error.responseText).message);
       });
@@ -79,71 +78,36 @@ function getWeatherInfo(name) {
       type: "GET",
       url: queryURL
     })
-      .then(function(response) {
+      .then(function (response) {
 
         console.log(response);
 
-        for ( let i = 0; i < 5; i++){
-          
+        for (let i = 0; i < 5; i++) {
 
-          let temp  = response.list[i].main.temp;
-          let humidity = response.list[i].main.humidity;
+
+          let temp = parseInt(response.list[i].main.temp);
+          let humidity = parseInt(response.list[i].main.humidity);
           let date = response.list[i].dt_txt;
+          let icon = response.list[i].weather[0].icon
 
-          console.log(temp, humidity, date);
-          
-        
-            var cardDeck = $('<div class="card-deck"/>');
-            var card = $('<div class="card"/>');
-            var cardBody = $('<div class="card-body"/>');
-            $(cardBody).append(`<p class="card-text1.1">${temp}</>`);  
-            $(cardBody).append(`<p class="card-text1.1">${humidity}</>`); 
-            $(cardBody).append(`<p class="card-text1.1">${date}</>`);   
-            $(card).append(cardBody);  
-            $(cardDeck).append(card);
+          var cardDeck = $('<div class="card-deck"/>');
+          var card = $('<div class="card"/>');
+          var cardBody = $('<div class="card-body"/>');
+          $(cardBody).append(`<p class="card-text1.1">Tempurature: ${temp}</>`);
+          $(cardBody).append(`<p class="card-text1.1">Humidity: ${humidity}</>`);
+          $(cardBody).append(`<p class="card-text1.1">${date}</>`);
+          $(cardBody).append(`<img src="http://openweathermap.org/img/w/${icon}.png" alt="Weather Icon" class="card-text1.1">`);
+          $(card).append(cardBody);
+          $(cardDeck).append(card);
 
-            $("#weather2").append(cardDeck);
-              
-            
+          $("#weather2").append(cardDeck);
+
+
 
         }
-        // for (var i = 0; i < response.list.length; i++) {
-        //   if (response.list[i].dt_txt.indexOf("12:00:00") !== -1) {
-        //     console.log(response.list[i].dt_txt);
-            // $(".card-body").attr("class", "card-body");
-            // $(".day1").attr("class", "day1");
-            // $(".day2").attr("class", "day2");
-            // $(".day3").attr("class", "day3");
-            // $(".day4").attr("class", "day4");
-            // $(".day5").attr("class", "day5");
-            // $(".card-text1.2").html(response.city.name);
-            // $(".1").attr("src", "http://openweathermap.org/img/w/" + response.list[7].weather[0].icon + ".png");
-            // $(".1").css("max-width", "20s%");
-            // $(".card-title1.1").html("Temperature: " + parseInt(response.list[7].main.temp) + "<br></br>" + "Humidity: " + parseInt(response.lsit[7].main.humidity));
-            // $(".day2").attr("class", "day2");
-            // $(".card-text2.2").html(response.city.name);
-            // $(".2").attr("src", "http://openweathermap.org/img/w/" + response.list[15].weather[0].icon + ".png");
-            // $(".2").css("max-width", "20%");
-            // $(".card-title2.1").html("Temperature: " + parseInt(response.list[15].main.temp) + "<br></br>" + "Humidity: " + parseInt(response.lsit[15].main.humidity));
-            // $(".day3").attr("class", "day3");
-            // $(".card-text3.2").html(response.city.name);
-            // $(".3").attr("src", "http://openweathermap.org/img/w/" + response.list[23].weather[0].icon + ".png");
-            // $(".3").css("max-width", "20%");
-            // $(".card-title3.1").html("Temperature: " + parseInt(response.list[23].main.temp) + "<br></br>" + "Humidity: " + parseInt(response.lsit[23].main.humidity));
-            // $(".day4").attr("class", "day4");
-            // $(".card-text4.2").html(response.city.name);
-            // $(".4").attr("src", "http://openweathermap.org/img/w/" + response.list[31].weather[0].icon + ".png");
-            // $(".4").css("max-width", "20%");
-            // $(".card-title4.1").html("Temperature: " + parseInt(response.list[31].main.temp) + "<br></br>" + "Humidity: " + parseInt(response.lsit[31].main.humidity));
-            // $(".day5").attr("class", "day5");
-            // $(".card-text5.2").html(response.city.name);
-            // $(".5").attr("src", "http://openweathermap.org/img/w/" + response.list[39].weather[0].icon + ".png");
-            // $(".5").css("max-width", "20%");
-            // $(".card-title5.1").html("Temperature: " + parseInt(response.list[39].main.temp) + "<br></br>" + "Humidity: " + parseInt(response.lsit[39].main.humidity));
-        //   }
-        // }
+
       })
-      .fail(function(error) {
+      .fail(function (error) {
         console.log(JSON.parse(error));
         // alert(JSON.parse(error.responseText).message);
       });
@@ -152,15 +116,15 @@ function getWeatherInfo(name) {
   }
 }
 
-$(function() {
-  $(document).on("click", ".city-name", function(event) {
+$(function () {
+  $(document).on("click", ".city-name", function (event) {
     var title = $(this).attr("data-name");
     console.log(title);
     getWeatherInfo(title);
     //getMovie(title);
   });
 
-  $("#submit").click(function(event) {
+  $("#submit").click(function (event) {
     event.preventDefault();
     $("#weather2").empty();
     console.log("Search");
