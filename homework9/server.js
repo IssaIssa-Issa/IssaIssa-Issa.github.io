@@ -1,58 +1,59 @@
-const express = require("express");
-const path = require("path");
-const fs = require("fs");
-const savedData = fs.readFileSync("./db/db.json", "UTF-8");
-let notes;
-if (savedData) {
-    const savedNotes = JSON.parse(savedData);
-    notes = savedNotes;
-    IDNum();
-}
+var express = require("express");
+var path = require("path");
+var fs = require("fs");
 
 var app = express();
-var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 8080;
+// var PORT = 8080
 
+// Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static('public'));
 
-app.get("/", function (req, res) {
-    res.sendFile(path.join(__dirname, "public/index.html"));
-});
+// Sets up a static folder for client files that ignores the routes
+app.use(express.static('public'))
 
-app.get("/notes", function (req, res) {
-    res.sendFile(path.join(__dirname, "public/notes.html"));
-});
-
-app.get("/api/notes", function (req, res) {
-    res.sendFile(path.join(__dirname, "db/db.json"))
-});
-
-app.post("/api/notes", function (req, res) {
-    let newNote = req.body;
-    notes.push(newNote);
-    IDNum();
-    fs.writeFileSync("./db/db.json", JSON.stringify(notes), function (err) {
-        if (err) throw err
-    });
-});
-
-app.delete("/api/notes/:id", function (req, res) {
-    const deletedNoteID = req.params.id;
-    notes.splice((deletedNoteID - 1), 1);
-    IDNum();
-    fs.writeFileSync("./db/db.json", JSON.stringify(notes), function(err) {
-        if (err) throw err
-    });
-});
-
-//Listening at PORT 3000 
 app.listen(PORT, function () {
-    console.log("App listening on PORT " + PORT);
+  console.log("App listening on PORT " + PORT);
 });
 
-function IDNum() {
-    for (i = 0; i < notes.length; i++) {
-        notes[i].id = (i + 1);
+//API
+app.get("/api/notes", function(req, res) {
+  res.json(JSON.parse(fs.readFileSync(path.join(__dirname, "./db/db.json"), 'utf8')));
+});
+
+var notes = fs.readFileSync(path.join(__dirname, "./db/db.json"), 'utf8');
+notes=JSON.parse(notes);
+
+// Create note 
+app.post("/api/notes", function(req, res) {
+  var newNote = req.body;
+  newNote.id = notes.length;
+  notes.push(newNote);
+  let stringifiedNotes = JSON.stringify(notes);
+  fs.writeFile("./db/db.json", stringifiedNotes, function(err) {
+    if(err) {
+        return console.log(err);
     }
-}
+  });
+  res.json(newNote);
+});
+
+//delete note
+app.delete("/api/notes/:id", function(req, res) {
+  const targetNote = parseInt(req.params.id);
+  notes.splice(targetNote, 1);
+  for(let i = 0; i < notes.length; i++){
+    notes[i].id = i;
+  }
+  let stringifiedNotes = JSON.stringify(notes);
+  fs.writeFile("./db/db.json", stringifiedNotes, function(err) {
+    if(err) {
+        return console.log(err);
+    }
+  });
+  res.sendFile(path.join(__dirname, "./public/notes.html"));
+});
+app.get("*", function(req, res) {
+    res.sendFile(path.join(__dirname, "./public/index.html"));
+  });
