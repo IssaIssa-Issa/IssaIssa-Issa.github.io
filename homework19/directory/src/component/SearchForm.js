@@ -1,6 +1,8 @@
 import React from "react";
 
 function SearchForm(props) {
+
+
   return (
     <div className="card text-center">
       <div className="card-header">
@@ -9,7 +11,7 @@ function SearchForm(props) {
       <div className="card-body"></div>
       <form>
         <div className="form-group" style={{ padding: '22px' }}>
-          <label htmlFor="search">{props.searchtype} Search</label>
+          <label htmlFor="search">Employees Search</label>
           <input
             onChange={props.handleInputChange}
             value={props.value}
@@ -17,13 +19,10 @@ function SearchForm(props) {
             name="search"
             type="text"
             className="form-control"
-            placeholder="Search Cars"
+            placeholder="Last Name"
             id="search"
           />
           <br />
-          <button onClick={props.handleFormSubmit} className="btn btn-primary">
-            Search Cars
-        </button>
         </div>
       </form>
     </div>
