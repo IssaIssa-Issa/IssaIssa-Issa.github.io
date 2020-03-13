@@ -1,59 +1,23 @@
+var http = require("http");
 var express = require("express");
-var path = require("path");
-var fs = require("fs");
-
 var app = express();
-var PORT = process.env.PORT || 8080;
-// var PORT = 8080
+var apiRoutes = require("./routes/apiRoutes")
+var htmlRoutes = require("./routes/htmlRoutes")
 
-// Sets up the Express app to handle data parsing
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+var PORT = 8080;
 
-// Sets up a static folder for client files that ignores the routes
-app.use(express.static('public'))
+// ESTABLISHING EXPRESS ROUTE
+app.use(express.json())
 
-app.listen(PORT, function () {
-  console.log("App listening on PORT " + PORT);
-});
+app.use(express.urlencoded({extended: true}))
 
-//API
-app.get("/api/notes", function(req, res) {
-  res.json(JSON.parse(fs.readFileSync(path.join(__dirname, "./db/db.json"), 'utf8')));
-});
+app.use(express.static("public"));
 
-var notes = fs.readFileSync(path.join(__dirname, "./db/db.json"), 'utf8');
-notes=JSON.parse(notes);
+// ACTUAL ROUTES
+app.use("/api", apiRoutes)
 
-// Create note 
-app.post("/api/notes", function(req, res) {
-  var newNote = req.body;
-  newNote.id = notes.length;
-  notes.push(newNote);
-  let stringifiedNotes = JSON.stringify(notes);
-  fs.writeFile("./db/db.json", stringifiedNotes, function(err) {
-    if(err) {
-        return console.log(err);
-    }
-  });
-  res.json(newNote);
-});
+app.use("/", htmlRoutes)
 
-//delete note
-app.delete("/api/notes/:id", function(req, res) {
-  const targetNote = parseInt(req.params.id);
-  notes.splice(targetNote, 1);
-  for(let i = 0; i < notes.length; i++){
-    notes[i].id = i;
-  }
-  let stringifiedNotes = JSON.stringify(notes);
-  fs.writeFile("./db/db.json", stringifiedNotes, function(err) {
-    if(err) {
-        return console.log(err);
-    }
-  });
-  res.sendFile(path.join(__dirname, "./public/notes.html"));
-});
-app.get("*", function(req, res) {
-    res.sendFile(path.join(__dirname, "./public/index.html"));
-  });
+app.listen(PORT, function(){
+    console.log("Server is ready to listen on port: " + PORT);
+})
